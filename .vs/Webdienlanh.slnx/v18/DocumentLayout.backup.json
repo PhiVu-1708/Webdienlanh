@@ -1,0 +1,583 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\webdienlanh\\Webdienlanh\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\admin\\manageorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\admin\\manageorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\admin\\manageapplications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\admin\\manageapplications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\admin\\managetechs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\admin\\managetechs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\home\\adminbookings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\home\\adminbookings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\technician\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\technician\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\home\\booking.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\home\\booking.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\home\\workflow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\home\\workflow.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\home\\trackorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\home\\trackorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\controllers\\techniciancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\controllers\\techniciancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\webdienlanh.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\webdienlanh.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\models\\bookingorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\models\\bookingorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\models\\technician.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\models\\technician.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\models\\useraccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\models\\useraccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/VU_SQLEXPRESS/DienLanhDB/True/SqlTable/dbo.UserAccounts.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\migrations\\20260904165045_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\migrations\\20260904165045_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\migrations\\20260906072035_addtechniciantable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\migrations\\20260906072035_addtechniciantable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\migrations\\20260905090426_addusertable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\migrations\\20260905090426_addusertable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\migrations\\20260905115422_addorderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\migrations\\20260905115422_addorderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|d:\\webdienlanh\\webdienlanh\\webdienlanh\\migrations\\20260928044008_addtechniciantobookingorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{409A3593-29B4-15C7-3AA0-328AE40E8203}|Webdienlanh\\Webdienlanh.csproj|solutionrelative:webdienlanh\\migrations\\20260928044008_addtechniciantobookingorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 279,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Webdienlanh\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAgwOAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T17:03:54.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAcwHYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-30T06:45:08.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Account\\Register.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAE8BAAAAAAAAAAAqwHABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-06T07:24:47.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ManageOrders.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\ManageOrders.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Admin\\ManageOrders.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\ManageOrders.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Admin\\ManageOrders.cshtml",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAowHUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-30T07:08:21.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ManageTechs.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\ManageTechs.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Admin\\ManageTechs.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\ManageTechs.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Admin\\ManageTechs.cshtml",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAAwPMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-30T07:09:31.263Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ManageApplications.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\ManageApplications.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Admin\\ManageApplications.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\ManageApplications.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Admin\\ManageApplications.cshtml",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAqwJ0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-06T04:58:37.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TrackOrder.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\TrackOrder.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Home\\TrackOrder.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\TrackOrder.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Home\\TrackOrder.cshtml",
+              "ViewState": "AgIAAFQBAAAAAAAAAAAuwG0BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-05T17:17:08.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAFkBAAAAAAAAAAAqwF0BAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-01T16:57:13.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdminBookings.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\AdminBookings.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Home\\AdminBookings.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\AdminBookings.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Home\\AdminBookings.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAgwDwAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-04T16:41:07.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAqwOsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-04T17:05:48.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Workflow.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Workflow.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Home\\Workflow.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Workflow.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Home\\Workflow.cshtml",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAqwLIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-04T15:52:44.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Booking.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Booking.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Home\\Booking.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Booking.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Home\\Booking.cshtml",
+              "ViewState": "AgIAAP0AAAAAAAAAAAAqwBICAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-01T18:16:52.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Technician\\Index.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Technician\\Index.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Technician\\Index.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Technician\\Index.cshtml",
+              "ViewState": "AgIAADUDAAAAAAAAAAAcwFcDAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-04T17:26:27.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAIwJMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-01T17:59:04.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAOwAAAAAAAAAAAAqwPwAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-04T17:23:57.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Webdienlanh\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAA5wHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-01T18:06:54.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Models\\AppDbContext.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "Webdienlanh\\Models\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T16:20:20.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Message.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Models\\Message.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\Message.cs",
+              "RelativeToolTip": "Webdienlanh\\Models\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T04:11:06.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Controllers\\ChatController.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "Webdienlanh\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAIwDsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T04:14:40.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TechnicianController.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\TechnicianController.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Controllers\\TechnicianController.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\TechnicianController.cs",
+              "RelativeToolTip": "Webdienlanh\\Controllers\\TechnicianController.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAwwJwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T17:25:17.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Webdienlanh\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Webdienlanh\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAowJ8AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-01T16:59:45.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "BookingOrder.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\BookingOrder.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Models\\BookingOrder.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\BookingOrder.cs",
+              "RelativeToolTip": "Webdienlanh\\Models\\BookingOrder.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA0wCsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T16:15:51.849Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "20260928044008_AddTechnicianToBookingOrder.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260928044008_AddTechnicianToBookingOrder.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Migrations\\20260928044008_AddTechnicianToBookingOrder.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260928044008_AddTechnicianToBookingOrder.cs",
+              "RelativeToolTip": "Webdienlanh\\Migrations\\20260928044008_AddTechnicianToBookingOrder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T04:40:08.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Webdienlanh.csproj",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Webdienlanh.csproj",
+              "RelativeDocumentMoniker": "Webdienlanh\\Webdienlanh.csproj",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Webdienlanh.csproj",
+              "RelativeToolTip": "Webdienlanh\\Webdienlanh.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-28T04:38:46.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Technician.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\Technician.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Models\\Technician.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\Technician.cs",
+              "RelativeToolTip": "Webdienlanh\\Models\\Technician.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-06T06:52:47.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UserAccount.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\UserAccount.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Models\\UserAccount.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Models\\UserAccount.cs",
+              "RelativeToolTip": "Webdienlanh\\Models\\UserAccount.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T08:30:34.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Webdienlanh\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAuwF0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T17:22:11.383Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20260906072035_AddTechnicianTable.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260906072035_AddTechnicianTable.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Migrations\\20260906072035_AddTechnicianTable.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260906072035_AddTechnicianTable.cs",
+              "RelativeToolTip": "Webdienlanh\\Migrations\\20260906072035_AddTechnicianTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-06T07:20:36.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "20260905090426_AddUserTable.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260905090426_AddUserTable.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Migrations\\20260905090426_AddUserTable.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260905090426_AddUserTable.cs",
+              "RelativeToolTip": "Webdienlanh\\Migrations\\20260905090426_AddUserTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T09:04:26.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "dbo.UserAccounts.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/VU_SQLEXPRESS/DienLanhDB/True/SqlTable/dbo.UserAccounts.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/VU_SQLEXPRESS/DienLanhDB/True/SqlTable/dbo.UserAccounts.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-09-05T09:09:35.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "20260905115422_AddOrderStatus.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260905115422_AddOrderStatus.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Migrations\\20260905115422_AddOrderStatus.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260905115422_AddOrderStatus.cs",
+              "RelativeToolTip": "Webdienlanh\\Migrations\\20260905115422_AddOrderStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T11:54:22.12Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "20260904165045_InitialCreate.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260904165045_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Migrations\\20260904165045_InitialCreate.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Migrations\\20260904165045_InitialCreate.cs",
+              "RelativeToolTip": "Webdienlanh\\Migrations\\20260904165045_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T16:50:45.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\appsettings.json",
+              "RelativeDocumentMoniker": "Webdienlanh\\appsettings.json",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\appsettings.json",
+              "RelativeToolTip": "Webdienlanh\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-01T17:01:07.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Program.cs",
+              "RelativeDocumentMoniker": "Webdienlanh\\Program.cs",
+              "ToolTip": "D:\\webdienlanh\\Webdienlanh\\Webdienlanh\\Program.cs",
+              "RelativeToolTip": "Webdienlanh\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCIAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T16:43:09.506Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

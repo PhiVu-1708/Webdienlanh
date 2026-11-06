@@ -1,0 +1,236 @@
+﻿@model IEnumerable<Webdienlanh.Models.BookingOrder>
+
+@{
+    ViewData["Title"] = "BPV - Thống Kê Doanh Thu & Analytics";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    // 1. XỬ LÝ DỮ LIỆU CỐT LÕI
+    var totalOrders = Model.Count();
+    var pendingOrders = Model.Where(o => o.Status == 0).ToList();
+    var processingOrders = Model.Where(o => o.Status == 1).ToList();
+    var completedOrders = Model.Where(o => o.Status == 2).ToList();
+
+    decimal totalRevenue = completedOrders.Sum(order =>
+        (order.SelectedServices?.Contains("Lắp Đặt") ?? false) ? 350000m :
+        (order.SelectedServices?.Contains("Vệ Sinh") ?? false) ? 150000m : 250000m
+    );
+    decimal totalCommission = totalRevenue * 0.10m;
+
+    // 2. TỶ TRỌNG DỊCH VỤ
+    int veSinhCount = Model.Count(o => o.SelectedServices != null && o.SelectedServices.Contains("Vệ Sinh"));
+    int lapDatCount = Model.Count(o => o.SelectedServices != null && o.SelectedServices.Contains("Lắp Đặt"));
+    int khacCount = totalOrders - veSinhCount - lapDatCount;
+    if (khacCount < 0) khacCount = 0;
+
+    // Tỉ lệ hoàn thành đơn
+    double successRate = totalOrders > 0 ? Math.Round((double)completedOrders.Count / totalOrders * 100, 1) : 0;
+}
+
+<div class="container-fluid py-4 px-lg-5">
+    <!-- HEADER -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
+        <div>
+            <span class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 rounded-pill fw-bold" style="letter-spacing: 1px;">
+                <i class="bi bi-graph-up-arrow me-1"></i> BPV FINANCIAL DASHBOARD
+            </span>
+            <h2 class="fw-black text-dark mb-1" style="font-weight: 900; letter-spacing: -1px;">Thống Kê Doanh Thu</h2>
+            <p class="text-muted mb-0 fw-medium">Báo cáo tài chính và hiệu suất dịch vụ theo thời gian thực.</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a asp-controller="Admin" asp-action="ExportExcel" class="btn btn-white border shadow-sm rounded-pill px-4 py-2 fw-bold text-success">
+                <i class="bi bi-file-earmark-excel-fill me-2"></i> Xuất Báo Cáo CSV
+            </a>
+        </div>
+    </div>
+
+    <!-- 1. HÀNG KPI: CHỈ SỐ TÀI CHÍNH -->
+    <div class="row g-4 mb-4">
+        <div class="col-xl-3 col-md-6">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                    <div>
+                        <p class="text-muted fw-bold small text-uppercase mb-1">Doanh Thu Hoa Hồng</p>
+                        <h3 class="fw-black text-dark mb-0">@totalCommission.ToString("N0")<span class="fs-6 text-muted ms-1">₫</span></h3>
+                    </div>
+                    <div class="kpi-icon bg-grad-success"><i class="bi bi-wallet2"></i></div>
+                </div>
+                <div class="text-success fw-bold small bg-success bg-opacity-10 p-2 rounded-3 d-inline-block w-100 text-center">
+                    <i class="bi bi-graph-up me-1"></i> Trích 10% từ @totalRevenue.ToString("N0")₫
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                    <div>
+                        <p class="text-muted fw-bold small text-uppercase mb-1">Tổng Số Đơn</p>
+                        <h3 class="fw-black text-dark mb-0">@totalOrders <span class="fs-6 text-muted fw-medium">đơn</span></h3>
+                    </div>
+                    <div class="kpi-icon bg-grad-primary"><i class="bi bi-lightning-charge-fill"></i></div>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between text-muted small fw-bold mb-1">
+                        <span>Tỉ lệ hoàn thành</span>
+                        <span class="text-primary">@successRate%</span>
+                    </div>
+                    <div class="progress" style="height: 6px; border-radius: 10px;">
+                        <div class="progress-bar bg-primary" style="width: @successRate%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                    <div>
+                        <p class="text-muted fw-bold small text-uppercase mb-1">Chờ Điều Phối</p>
+                        <h3 class="fw-black text-warning mb-0">@pendingOrders.Count</h3>
+                    </div>
+                    <div class="kpi-icon bg-grad-warning"><i class="bi bi-hourglass-split"></i></div>
+                </div>
+                <a asp-controller="Admin" asp-action="ManageOrders" class="text-warning text-decoration-none fw-bold small">
+                    Chuyển qua phân công <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                    <div>
+                        <p class="text-muted fw-bold small text-uppercase mb-1">Đang Thực Hiện</p>
+                        <h3 class="fw-black text-info mb-0">@processingOrders.Count</h3>
+                    </div>
+                    <div class="kpi-icon bg-grad-info"><i class="bi bi-tools"></i></div>
+                </div>
+                <span class="text-info fw-bold small"><i class="bi bi-geo-alt-fill me-1"></i> Thợ đang đi sửa</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. HÀNG BIỂU ĐỒ PHÂN TÍCH -->
+    <div class="row g-4 mb-4">
+        <!-- Biểu đồ Đường: Xu hướng Doanh thu -->
+        <div class="col-xl-8">
+            <div class="glass-card p-4 h-100">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold text-dark mb-0">Biến Động Doanh Thu Hoa Hồng</h5>
+                    <select class="form-select form-select-sm fw-bold border-0 bg-light text-primary w-auto rounded-pill px-3 shadow-none" id="chartFilter" onchange="updateMainChart()">
+                        <option value="week">7 Ngày Qua</option>
+                        <option value="month">Tháng Này</option>
+                    </select>
+                </div>
+                <div class="chart-wrapper" style="height: 320px;">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biểu đồ Tròn: Tỷ trọng Dịch vụ -->
+        <div class="col-xl-4">
+            <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                <h5 class="fw-bold text-dark mb-3">Tỷ Trọng Dịch Vụ</h5>
+                <div class="chart-wrapper d-flex justify-content-center" style="height: 230px;">
+                    <canvas id="serviceChart"></canvas>
+                </div>
+                <div class="d-flex justify-content-around mt-3 pt-3 border-top">
+                    <div class="text-center"><div class="fw-black fs-5 text-primary">@veSinhCount</div><small class="text-muted fw-bold">Vệ Sinh</small></div>
+                    <div class="text-center"><div class="fw-black fs-5 text-success">@lapDatCount</div><small class="text-muted fw-bold">Lắp Đặt</small></div>
+                    <div class="text-center"><div class="fw-black fs-5 text-warning">@khacCount</div><small class="text-muted fw-bold">Khác</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. NHẬT KÝ HOẠT ĐỘNG GẦN ĐÂY -->
+    <div class="glass-card p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-clock-history me-2 text-primary"></i>Nhật Ký Đơn Hàng Mới Nhất</h5>
+            <a asp-controller="Admin" asp-action="ManageOrders" class="btn btn-sm btn-light border rounded-pill px-3 fw-bold">Xem tất cả đơn</a>
+        </div>
+        <div class="row g-3">
+            @foreach (var order in Model.OrderByDescending(o => o.Id).Take(4))
+            {
+                <div class="col-md-3">
+                    <div class="p-3 bg-light rounded-4 border">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-white text-dark border fw-bold">#HD-@order.Id.ToString("D3")</span>
+                            @if (order.Status == 0)
+                            {
+                                <span class="badge bg-warning bg-opacity-10 text-warning">Chờ nhận</span>
+                            }
+                            else if (order.Status == 1)
+                            {
+
+                                <span class="badge bg-primary bg-opacity-10 text-primary">Đang sửa</span>
+                            }
+                            else
+                            {
+
+                                <span class="badge bg-success bg-opacity-10 text-success">Xong</span>
+                            }
+                        </div>
+                        <h6 class="fw-bold text-dark mb-1 text-truncate">@order.CustomerName</h6>
+                        <p class="small text-muted mb-0 text-truncate">@order.SelectedServices</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // 1. BIỂU ĐỒ ĐƯỜNG (REVENUE LINE CHART)
+        const ctxRev = document.getElementById('revenueChart').getContext('2d');
+        let gradRev = ctxRev.createLinearGradient(0, 0, 0, 300);
+        gradRev.addColorStop(0, 'rgba(67, 56, 202, 0.4)');
+        gradRev.addColorStop(1, 'rgba(67, 56, 202, 0)');
+
+        let revenueChart = new Chart(ctxRev, {
+            type: 'line',
+            data: {
+                labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+                datasets: [{
+                    label: 'Hoa Hồng (VNĐ)',
+                    data: [120000, 190000, 150000, 250000, 220000, 380000, @totalCommission],
+                    borderColor: '#4338ca', backgroundColor: gradRev, borderWidth: 3, fill: true, tension: 0.4,
+                    pointBackgroundColor: '#fff', pointBorderColor: '#4338ca', pointBorderWidth: 2, pointRadius: 4
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { border: { display: false } } } }
+        });
+
+        function updateMainChart() {
+            let val = document.getElementById('chartFilter').value;
+            if(val === 'month') {
+                revenueChart.data.labels = ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'];
+                revenueChart.data.datasets[0].data = [450000, 680000, 510000, 950000];
+            } else {
+                revenueChart.data.labels = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
+                revenueChart.data.datasets[0].data = [120000, 190000, 150000, 250000, 220000, 380000, @totalCommission];
+            }
+            revenueChart.update();
+        }
+
+        // 2. BIỂU ĐỒ TRÒN (DOUGHNUT CHART)
+        const ctxService = document.getElementById('serviceChart').getContext('2d');
+        new Chart(ctxService, {
+            type: 'doughnut',
+            data: {
+                labels: ['Vệ Sinh', 'Lắp Đặt', 'Khác'],
+                datasets: [{
+                    data: [@veSinhCount, @lapDatCount, @khacCount],
+                    backgroundColor: ['#4338ca', '#10b981', '#f59e0b'],
+                    borderWidth: 0, hoverOffset: 4
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: { legend: { display: false } } }
+        });
+    </script>
+}

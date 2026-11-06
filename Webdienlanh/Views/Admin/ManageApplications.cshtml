@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Webdienlanh.Controllers.TechApplication>
+
+@{
+    ViewData["Title"] = "BPV - Duyệt Hồ Sơ Ứng Tuyển";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid py-4 px-lg-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h2 class="fw-black text-dark mb-1">Duyệt Hồ Sơ Tuyển Dụng</h2>
+            <p class="text-muted mb-0 fw-medium">Xem xét toàn bộ hồ sơ đăng ký đối tác kỹ thuật viên mới.</p>
+        </div>
+        <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill px-4 py-2 fs-6">
+            <i class="bi bi-bell-fill me-2"></i>@Model.Count(a => a.Status == "Chờ duyệt") Hồ sơ chờ xử lý
+        </span>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success shadow-sm rounded-4 mb-4 fw-semibold p-3"><i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-secondary shadow-sm rounded-4 mb-4 fw-semibold p-3 text-dark"><i class="bi bi-info-circle-fill me-2"></i>@TempData["ErrorMessage"]</div>
+    }
+
+    <div class="glass-card p-4">
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-inbox fs-1 text-muted opacity-50 mb-3 d-block"></i>
+                <h5 class="fw-bold text-dark">Chưa có đơn ứng tuyển nào</h5>
+                <p class="text-muted">Khi có người đăng ký từ website, hồ sơ sẽ xuất hiện tại đây.</p>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle border-bottom">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xs fw-bold px-3 py-3 rounded-start-3">Ứng viên</th>
+                            <th class="text-uppercase text-secondary text-xs fw-bold px-3 py-3">Khu Vực</th>
+                            <th class="text-uppercase text-secondary text-xs fw-bold px-3 py-3">Thời gian nộp</th>
+                            <th class="text-uppercase text-secondary text-xs fw-bold px-3 py-3">Trạng thái</th>
+                            <th class="text-uppercase text-secondary text-xs fw-bold px-3 py-3 text-end rounded-end-3">Quyết định</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var app in Model)
+                        {
+                            <tr>
+                                <td class="px-3 py-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm me-3" style="width: 45px; height: 45px;">
+                                            @app.FullName.Substring(0, 1).ToUpper()
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold text-dark">@app.FullName</h6>
+                                            <span class="text-muted small"><i class="bi bi-telephone-fill me-1"></i>@app.Phone</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-3 py-3">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary fw-medium text-xs">@app.Area</span>
+                                </td>
+                                <td class="px-3 py-3 text-muted text-sm fw-medium">
+                                    @app.AppliedDate.ToString("dd/MM/yyyy HH:mm")
+                                </td>
+                                <td class="px-3 py-3">
+                                    @if (app.Status == "Chờ duyệt")
+                                    {
+                                        <span class="badge bg-warning text-dark"><i class="bi bi-hourglass-split me-1"></i>Chờ duyệt</span>
+                                    }
+                                    else if (app.Status == "Đã duyệt")
+                                    {
+
+                                        <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Đã duyệt</span>
+                                    }
+                                    else
+                                    {
+
+                                        <span class="badge bg-secondary"><i class="bi bi-x-circle me-1"></i>Từ chối</span>
+                                    }
+                                </td>
+                                <td class="px-3 py-3 text-end">
+                                    <div class="d-flex justify-content-end gap-2 align-items-center">
+                                        <!-- NÚT XEM CHI TIẾT HỒ SƠ -->
+                                        <button type="button" class="btn btn-sm btn-info text-white fw-bold rounded-pill px-3 shadow-sm"
+                                                onclick="viewAppDetails('@app.FullName', '@app.Phone', '@app.Area', '@app.Experience', '@app.Services')">
+                                            <i class="bi bi-eye-fill me-1"></i> Xem
+                                        </button>
+
+                                        @if (app.Status == "Chờ duyệt")
+                                        {
+                                            <form asp-controller="Admin" asp-action="ApproveApplication" method="post" class="m-0">
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <button type="submit" class="btn btn-sm btn-success fw-bold rounded-pill shadow-sm px-3"><i class="bi bi-check-lg me-1"></i> Duyệt</button>
+                                            </form>
+                                            <form asp-controller="Admin" asp-action="RejectApplication" method="post" class="m-0">
+                                                <input type="hidden" name="id" value="@app.Id" />
+                                                <button type="submit" class="btn btn-sm btn-light border text-danger fw-bold rounded-pill px-2"><i class="bi bi-x-lg"></i></button>
+                                            </form>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- MODAL XEM CHI TIẾT HỒ SƠ ỨNG VIÊN -->
+<div class="modal fade" id="appDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow-lg overflow-hidden">
+            <div class="bg-grad-info p-4 text-center position-relative">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                <div class="bg-white text-info rounded-circle d-flex align-items-center justify-content-center fw-black shadow mx-auto" style="width: 80px; height: 80px; font-size: 2rem;" id="modalAvatar">T</div>
+                <h4 class="fw-black text-white mt-3 mb-0" id="modalName">Tên ứng viên</h4>
+                <p class="text-white opacity-75 mb-0" id="modalPhone">09xxxx</p>
+            </div>
+            <div class="modal-body p-4 bg-light">
+                <div class="bg-white rounded-4 p-3 shadow-sm border mb-3">
+                    <p class="text-muted small fw-bold mb-1 text-uppercase"><i class="bi bi-geo-alt-fill me-2 text-info"></i>Khu vực đăng ký</p>
+                    <h6 class="fw-bold text-dark mb-0" id="modalArea">---</h6>
+                </div>
+                <div class="bg-white rounded-4 p-3 shadow-sm border mb-3">
+                    <p class="text-muted small fw-bold mb-1 text-uppercase"><i class="bi bi-star-fill me-2 text-warning"></i>Kinh nghiệm</p>
+                    <h6 class="fw-bold text-dark mb-0" id="modalExperience">---</h6>
+                </div>
+                <div class="bg-white rounded-4 p-3 shadow-sm border">
+                    <p class="text-muted small fw-bold mb-1 text-uppercase"><i class="bi bi-tools me-2 text-primary"></i>Dịch vụ có thể đảm nhận</p>
+                    <h6 class="fw-bold text-dark mb-0" id="modalServices">---</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function viewAppDetails(name, phone, area, exp, services) {
+            document.getElementById('modalAvatar').innerText = name.substring(0, 1).toUpperCase();
+            document.getElementById('modalName').innerText = name;
+            document.getElementById('modalPhone').innerText = phone;
+            document.getElementById('modalArea').innerText = area;
+            document.getElementById('modalExperience').innerText = exp;
+            document.getElementById('modalServices').innerText = services;
+
+            new bootstrap.Modal(document.getElementById('appDetailsModal')).show();
+        }
+    </script>
+}

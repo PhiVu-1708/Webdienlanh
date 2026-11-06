@@ -1,0 +1,350 @@
+﻿@{
+    ViewData["Title"] = "Dịch Vụ Máy Lạnh Chuyên Nghiệp - BPV STORE";
+}
+
+<!-- FONT CHUẨN QUỐC TẾ: PLUS JAKARTA SANS -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --primary: #2563eb;
+        --primary-glow: rgba(37, 99, 235, 0.4);
+        --accent: #0ea5e9;
+        --dark: #0f172a;
+        --light-bg: #f8fafc;
+    }
+
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--light-bg);
+        overflow-x: hidden;
+    }
+
+    /* ================= 1. HERO SECTION (SLIDER XUYÊN THẤU) ================= */
+    .hero-section {
+        position: relative;
+        min-height: 95vh;
+        display: flex;
+        align-items: center;
+        background-color: var(--dark);
+        margin-top: -24px; /* Kéo lên sát Navbar tùy layout của bạn */
+        padding-top: 80px;
+        padding-bottom: 120px;
+        overflow: hidden;
+    }
+
+    /* Đưa Carousel làm Background */
+    .hero-carousel-bg {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+    }
+    .hero-carousel-bg .carousel-item { height: 100vh; transition: opacity 1.5s ease-in-out; }
+    .hero-carousel-bg img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Lớp phủ Gradient đè lên Slider để chữ dễ đọc */
+    .hero-overlay {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 50%, rgba(37, 99, 235, 0.3) 100%);
+        z-index: 2;
+    }
+
+    .hero-content { position: relative; z-index: 10; }
+
+    .location-pill {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5; padding: 10px 24px; border-radius: 50px;
+        font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+        animation: pulseGlow 2s infinite;
+    }
+
+    @@keyframes pulseGlow {
+        0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); }
+        50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.5); }
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.15; letter-spacing: -1.5px;
+    }
+    .text-gradient {
+        background: linear-gradient(to right, #60a5fa, #38bdf8, #818cf8);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .btn-super {
+        padding: 16px 36px; border-radius: 50px; font-weight: 700; font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-primary-super {
+        background: var(--primary); color: white; border: none; box-shadow: 0 10px 30px -5px var(--primary-glow);
+    }
+    .btn-primary-super:hover {
+        transform: translateY(-4px); box-shadow: 0 20px 40px -5px var(--primary-glow); color: white;
+    }
+    .btn-outline-super {
+        background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px);
+    }
+    .btn-outline-super:hover {
+        background: rgba(255,255,255,0.15); transform: translateY(-4px); color: white; border-color: rgba(255,255,255,0.4);
+    }
+
+    /* ================= 2. FLOATING STATS (THỐNG KÊ KÍNH MỜ) ================= */
+    .stats-container {
+        position: relative; z-index: 20; margin-top: -80px;
+    }
+    .stat-glass-card {
+        background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 1); border-radius: 24px; padding: 2rem 1.5rem; text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .stat-glass-card:hover {
+        transform: translateY(-10px); box-shadow: 0 30px 60px rgba(37, 99, 235, 0.12);
+    }
+    .stat-num {
+        font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, #2563eb, #0ea5e9);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 0.5rem;
+    }
+
+    /* ================= 3. BENTO GRID TÍNH NĂNG ================= */
+    .feature-card {
+        background: white; border-radius: 30px; padding: 30px; height: 100%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .feature-card:hover {
+        transform: translateY(-8px); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
+    }
+    .feature-icon-wrapper {
+        width: 70px; height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem;
+    }
+
+    /* ================= 4. REVIEW CARDS ================= */
+    .review-card {
+        background: white; border-radius: 24px; padding: 30px; height: 100%; position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.3s ease;
+    }
+    .review-card:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+    .quote-icon {
+        position: absolute; top: 20px; right: 25px; font-size: 4rem; color: #f1f5f9; z-index: 1; font-family: serif; line-height: 1;
+    }
+</style>
+
+<!-- ================= HERO SECTION (TÍCH HỢP SLIDER) ================= -->
+<section class="hero-section">
+    <!-- KHỤC PHỤC TÍNH NĂNG: Carousel Slider chuyển động nền -->
+    <div id="bgCarousel" class="carousel slide carousel-fade hero-carousel-bg" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" onerror="this.src='https://placehold.co/2000x550/0d6efd/white?text=BPV+STORE';" alt="Thợ điện lạnh">
+            </div>
+            <div class="carousel-item h-100">
+                <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop" onerror="this.src='https://placehold.co/2000x550/0d6efd/white?text=BPV+STORE';" alt="Phụ tùng máy lạnh">
+            </div>
+            <div class="carousel-item h-100">
+                <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" onerror="this.src='https://placehold.co/2000x550/0d6efd/white?text=BPV+STORE';" alt="Bảo trì cục nóng">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lớp phủ bóng đêm tĩnh -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Nội dung cố định nổi lên trên Carousel -->
+    <div class="container hero-content">
+        <div class="row justify-content-center text-center text-lg-start">
+            <div class="col-xl-9 col-lg-10">
+                <div class="location-pill mb-4 mx-auto mx-lg-0">
+                    <i class="bi bi-geo-alt-fill"></i> Phục vụ 24/7 tại Thủ Dầu Một
+                </div>
+
+                <h1 class="hero-title text-white mb-4">
+                    Dịch Vụ Mua Bán, Lắp Đặt, <br class="d-none d-md-block" />
+                    <span class="text-gradient">Sửa Chữa Điện Lạnh Tận Nơi</span>
+                </h1>
+                
+                <p class="fs-5 text-light fw-medium mb-5 mx-auto mx-lg-0" style="max-width: 700px; opacity: 0.85; line-height: 1.7;">
+                    Giải pháp điện lạnh toàn diện, nhanh chóng, uy tín. Đội ngũ kỹ thuật viên dày dặn kinh nghiệm, có mặt ngay sau <b class="text-white border-bottom border-info border-2">30 phút</b>!
+                </p>
+
+                <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-5">
+                    <!-- KHÔI PHỤC TÍNH NĂNG: Link chính xác -->
+                    <a asp-controller="Home" asp-action="Booking" class="btn-super btn-primary-super">
+                        <i class="bi bi-calendar-check-fill"></i> Đặt Lịch Ngay
+                    </a>
+                    <a asp-controller="Home" asp-action="Workflow" class="btn-super btn-outline-super">
+                        <i class="bi bi-info-circle"></i> Tìm Hiểu Thêm
+                    </a>
+                </div>
+
+                <!-- Trust Avatars -->
+                <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-3">
+                    <div class="d-flex" style="margin-left: 10px;">
+                        <img src="https://ui-avatars.com/api/?name=An&background=random" class="rounded-circle border border-3 border-dark" width="45" height="45" style="margin-left: -15px;">
+                        <img src="https://ui-avatars.com/api/?name=Binh&background=random" class="rounded-circle border border-3 border-dark" width="45" height="45" style="margin-left: -15px;">
+                        <img src="https://ui-avatars.com/api/?name=Cuong&background=random" class="rounded-circle border border-3 border-dark" width="45" height="45" style="margin-left: -15px;">
+                    </div>
+                    <div class="text-start">
+                        <div class="text-warning small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <span class="text-light small fw-medium opacity-75">Được tin dùng bởi 5K+ gia đình</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FLOATING STATS ================= -->
+<div class="container stats-container mb-5">
+    <div class="row g-3 g-lg-4 text-center">
+        <!-- Khôi phục lại đúng data gốc của bạn -->
+        <div class="col-6 col-md-3">
+            <div class="stat-glass-card">
+                <div class="stat-num">10+</div>
+                <div class="text-muted fw-bold text-uppercase small" style="letter-spacing: 1px;">Năm Kinh Nghiệm</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="stat-glass-card">
+                <div class="stat-num">5K+</div>
+                <div class="text-muted fw-bold text-uppercase small" style="letter-spacing: 1px;">Khách Hài Lòng</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="stat-glass-card">
+                <div class="stat-num">50+</div>
+                <div class="text-muted fw-bold text-uppercase small" style="letter-spacing: 1px;">Thợ Lành Nghề</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="stat-glass-card">
+                <div class="stat-num">24/7</div>
+                <div class="text-muted fw-bold text-uppercase small" style="letter-spacing: 1px;">Hỗ Trợ Nhanh Chóng</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= BENTO GRID - TẠI SAO CHỌN BPV ================= -->
+<div class="container py-5 my-5">
+    <div class="text-center mb-5 pb-3">
+        <h6 class="text-primary fw-bold text-uppercase" style="letter-spacing: 2px;">Về Chúng Tôi</h6>
+        <h2 class="fw-black display-6 text-dark" style="font-weight: 800;">Tại sao nên chọn <span class="text-primary">BPV Store</span>?</h2>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+        <div class="col-lg-5">
+            <div class="feature-card position-relative overflow-hidden p-0 bg-dark h-100" style="min-height: 400px;">
+                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop" onerror="this.src='https://placehold.co/800x600/e9ecef/6c757d?text=BPV+STORE';" class="w-100 h-100 object-fit-cover opacity-75" alt="Thợ điện lạnh">
+                <div class="position-absolute bottom-0 start-0 w-100 p-4 p-xl-5" style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                    <div class="feature-icon-wrapper bg-white text-success shadow">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h3 class="text-white fw-bold mb-2">Bảo Hành 100%</h3>
+                    <p class="text-light opacity-75 mb-0 fw-medium">Linh kiện chính hãng.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Khôi phục đúng 3 lý do gốc của bạn -->
+        <div class="col-lg-7">
+            <div class="row g-4 h-100">
+                <div class="col-md-6">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon-wrapper bg-primary text-white shadow-sm">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark">Có Mặt Hỏa Tốc Sau 30 Phút</h5>
+                        <p class="text-muted mb-0">Hệ thống chi nhánh bao phủ, kỹ thuật viên sẽ có mặt tại nhà bạn ngay lập tức sau khi tiếp nhận yêu cầu.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon-wrapper bg-info text-white shadow-sm">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <h5 class="fw-bold text-dark">Báo Giá Minh Bạch, Không Phát Sinh</h5>
+                        <p class="text-muted mb-0">Luôn kiểm tra tình trạng máy và báo giá chi tiết cho khách hàng duyệt trước khi bắt tay vào sửa chữa.</p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="feature-card d-flex flex-column flex-sm-row align-items-sm-center gap-4">
+                        <div class="feature-icon-wrapper bg-success text-white flex-shrink-0 shadow-sm mb-0">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark">Đội Ngũ Thợ Chuyên Sâu</h5>
+                            <p class="text-muted mb-0">Thợ được đào tạo bài bản, trị dứt điểm các lỗi khó nhất của các dòng máy lạnh Inverter hiện đại.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= ĐÁNH GIÁ KHÁCH HÀNG ================= -->
+<div class="container py-5 mb-5">
+    <div class="bg-white rounded-5 p-4 p-xl-5 shadow-sm border border-light">
+        <div class="text-center mb-5">
+            <h6 class="text-primary fw-bold text-uppercase" style="letter-spacing: 2px;">Phản Hồi</h6>
+            <h2 class="fw-black display-6 text-dark" style="font-weight: 800;">Khách Hàng Nói Gì Về Chúng Tôi</h2>
+        </div>
+
+        <div class="row g-4">
+            <!-- Review 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="text-warning mb-3 fs-6 position-relative z-2">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="text-muted fw-medium mb-4 position-relative z-2 fst-italic" style="line-height: 1.6;">"Thợ đến đúng giờ, làm việc rất sạch sẽ và chuyên nghiệp. Máy lạnh nhà tôi bị chảy nước đã được xử lý triệt để. Giá cả rất hợp lý, sẽ ủng hộ dài dài."</p>
+                    <div class="d-flex align-items-center mt-auto position-relative z-2 border-top pt-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-5 me-3" style="width: 45px; height: 45px;">A</div>
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark">Anh Hùng Anh</h6>
+                            <span class="small text-muted">Cư dân Thủ Dầu Một</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="text-warning mb-3 fs-6 position-relative z-2">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="text-muted fw-medium mb-4 position-relative z-2 fst-italic" style="line-height: 1.6;">"Mùa nóng máy hư gọi mấy chỗ không ai nhận, may mắn tìm được BPV Store. Thợ đến bơm gas nhanh gọn, máy lạnh sâu buốt như mới mua. Rất ưng ý!"</p>
+                    <div class="d-flex align-items-center mt-auto position-relative z-2 border-top pt-3">
+                        <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-5 me-3" style="width: 45px; height: 45px;">L</div>
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark">Chị Lan Phương</h6>
+                            <span class="small text-muted">Chủ cửa hàng quần áo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="col-lg-4 col-md-6 d-none d-lg-block">
+                <div class="review-card">
+                    <div class="quote-icon">"</div>
+                    <div class="text-warning mb-3 fs-6 position-relative z-2">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="text-muted fw-medium mb-4 position-relative z-2 fst-italic" style="line-height: 1.6;">"Dịch vụ tháo lắp di dời máy lạnh cực kỳ cẩn thận, không làm trầy xước tường. Có xuất hóa đơn và phiếu bảo hành rõ ràng, phong cách làm việc rất chuyên nghiệp."</p>
+                    <div class="d-flex align-items-center mt-auto position-relative z-2 border-top pt-3">
+                        <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center fw-bold fs-5 me-3" style="width: 45px; height: 45px;">M</div>
+                        <div>
+                            <h6 class="fw-bold mb-0 text-dark">Anh Minh Trí</h6>
+                            <span class="small text-muted">Quản lý văn phòng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

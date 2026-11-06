@@ -1,0 +1,531 @@
+﻿@model Webdienlanh.Models.BookingOrder
+@{
+    ViewData["Title"] = "Đặt Lịch Dịch Vụ - BPV STORE";
+}
+
+<!-- FONT CHUẨN QUỐC TẾ -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --primary: #2563eb;
+        --primary-glow: rgba(37, 99, 235, 0.15);
+        --dark: #0f172a;
+        --surface: #ffffff;
+        --bg-light: #f8fafc;
+    }
+
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-light); }
+
+    /* ================= 1. HERO BANNER ================= */
+    .hero-banner {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border-radius: 24px; padding: 4rem 2rem; position: relative; overflow: hidden;
+        box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.3); margin-top: 1.5rem; margin-bottom: 3rem;
+    }
+    .hero-banner::before {
+        content: ''; position: absolute; top: -50%; right: -10%; width: 500px; height: 500px;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 70%); border-radius: 50%;
+    }
+    .hero-banner::after {
+        content: ''; position: absolute; bottom: -50%; left: -10%; width: 400px; height: 400px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%); border-radius: 50%;
+    }
+
+    /* ================= 2. SERVICE CARDS ================= */
+    .service-card {
+        background: var(--surface); border: 2px solid #e2e8f0; border-radius: 20px;
+        padding: 1.5rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative; overflow: hidden; height: 100%; display: flex; align-items: center; gap: 1rem;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05); border-color: #cbd5e1; }
+    
+    .btn-check:checked + .service-card {
+        border-color: var(--primary); background-color: #eff6ff;
+        box-shadow: 0 0 0 4px var(--primary-glow), 0 15px 35px rgba(37, 99, 235, 0.1);
+    }
+    
+    .icon-box {
+        width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
+        background: #f1f5f9; color: #64748b; font-size: 1.5rem; transition: all 0.3s ease; flex-shrink: 0;
+    }
+    .btn-check:checked + .service-card .icon-box { background: var(--primary); color: white; }
+    
+    .check-icon {
+        position: absolute; top: 1rem; right: 1rem; width: 24px; height: 24px;
+        background: var(--primary); color: white; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; transform: scale(0.5); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-check:checked + .service-card .check-icon { opacity: 1; transform: scale(1); }
+
+    /* ================= 3. FORM CONTROLS & DIAGNOSTIC TREE ================= */
+    .section-title { font-weight: 800; color: var(--dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
+    .section-num { 
+        background: var(--dark); color: white; width: 36px; height: 36px; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(15,23,42,0.2);
+    }
+
+    .form-floating > .form-control, .form-floating > textarea {
+        border-radius: 16px; border: 2px solid #e2e8f0; font-weight: 600; color: var(--dark);
+        transition: all 0.2s ease; background-color: #f8fafc;
+    }
+    .form-floating > .form-control:focus, .form-floating > textarea:focus {
+        border-color: var(--primary); background-color: white; box-shadow: 0 0 0 4px var(--primary-glow);
+    }
+    .form-floating > label { font-weight: 600; color: #64748b; font-size: 0.95rem; }
+
+    /* Styles cho Checkbox Cây chuẩn đoán đa lựa chọn */
+    .diag-checkbox:checked + label {
+        background-color: var(--primary); color: white !important;
+        box-shadow: 0 5px 15px var(--primary-glow); border-color: var(--primary); transform: translateY(-2px);
+    }
+    .diag-checkbox + label { transition: all 0.2s ease; border-width: 2px; }
+
+    .disabled-payment { opacity: 0.4; cursor: not-allowed !important; pointer-events: none; filter: grayscale(100%); }
+
+    /* ================= 4. STICKY RECEIPT ================= */
+    .sticky-cart {
+        position: sticky; top: 2rem; background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 1); border-radius: 24px;
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08); overflow: hidden;
+    }
+    .receipt-header {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 1.5rem; color: white; text-align: center;
+    }
+    .cart-item {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 1rem 0; border-bottom: 1px dashed #cbd5e1;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    
+    @@keyframes slideIn { from { opacity: 0; transform: translateX(-15px); } to { opacity: 1; transform: translateX(0); } }
+
+    .btn-submit-hero {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); border: none;
+        color: white; border-radius: 16px; transition: all 0.3s ease;
+    }
+    .btn-submit-hero:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3); }
+</style>
+
+<div class="container py-4">
+    <div class="hero-banner text-center text-white">
+        <div class="d-inline-flex align-items-center justify-content-center bg-white bg-opacity-10 rounded-4 mb-4 backdrop-blur" style="width: 72px; height: 72px; border: 1px solid rgba(255,255,255,0.1);">
+            <i class="bi bi-calendar2-check-fill fs-1 text-info"></i>
+        </div>
+        <h1 class="fw-black mb-3 display-5" style="font-weight: 900; letter-spacing: -1px;">Đặt Lịch Sửa Chữa & Bảo Trì</h1>
+        <p class="fs-5 opacity-75 mb-0 mx-auto fw-medium" style="max-width: 650px;">Kỹ thuật viên chuyên nghiệp của BPV Store sẽ có mặt tận nơi sau <b class="text-white">30 phút</b> để hỗ trợ bạn!</p>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm rounded-4 mb-5 fw-bold p-4 d-flex align-items-center border-0" style="background: #ecfdf5; color: #065f46;">
+            <i class="bi bi-check-circle-fill fs-3 me-3 text-success"></i> 
+            <div>
+                <h6 class="mb-0 fw-bold">Đặt lịch thành công!</h6>
+                <span class="small fw-medium">@TempData["SuccessMessage"]</span>
+            </div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm rounded-4 mb-5 fw-bold p-4 d-flex align-items-center border-0" style="background: #fef2f2; color: #991b1b;">
+            <i class="bi bi-exclamation-triangle-fill fs-3 me-3 text-danger"></i> 
+            <div>
+                <h6 class="mb-0 fw-bold">Có lỗi xảy ra!</h6>
+                <span class="small fw-medium">@TempData["ErrorMessage"]</span>
+            </div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <form asp-controller="Home" asp-action="Booking" method="post" id="bookingForm">
+        <div class="row g-4 g-lg-5 mb-5">
+
+            <!-- ================= CỘT TRÁI: NHẬP LIỆU ================= -->
+            <div class="col-lg-8">
+                
+                <!-- BƯỚC 1 -->
+                <div class="mb-5 pb-3">
+                    <h4 class="section-title"><span class="section-num">1</span> Chọn Dịch Vụ Cần Hỗ Trợ</h4>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <input type="checkbox" class="btn-check service-checkbox" id="svc1" name="SelectedServices" value="Vệ Sinh Máy Lạnh" data-price="150000" autocomplete="off">
+                            <label class="service-card" for="svc1">
+                                <div class="check-icon"><i class="bi bi-check-lg"></i></div>
+                                <div class="icon-box"><i class="bi bi-wind"></i></div>
+                                <div><h6 class="fw-bold text-dark mb-1">Vệ Sinh Máy Lạnh</h6><span class="text-danger fw-black">150.000đ</span></div>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="checkbox" class="btn-check service-checkbox" id="svc2" name="SelectedServices" value="Bơm Gas Chuyên Dụng" data-price="250000" autocomplete="off">
+                            <label class="service-card" for="svc2">
+                                <div class="check-icon"><i class="bi bi-check-lg"></i></div>
+                                <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+                                <div><h6 class="fw-bold text-dark mb-1">Bơm Gas Chuyên Dụng</h6><span class="text-danger fw-black">250.000đ</span></div>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="checkbox" class="btn-check service-checkbox special-service" id="svc3" name="SelectedServices" value="Khám Sửa Chữa Tận Nhà" data-price="0" autocomplete="off">
+                            <label class="service-card" for="svc3" style="border-width: 2px;">
+                                <div class="check-icon"><i class="bi bi-check-lg"></i></div>
+                                <div class="icon-box bg-danger bg-opacity-10 text-danger"><i class="bi bi-wrench-adjustable"></i></div>
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-1">Khám Sửa Chữa Tận Nhà</h6>
+                                    <span class="text-danger fw-bold small bg-danger bg-opacity-10 px-2 py-1 rounded-pill">Báo giá sau khảo sát</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="checkbox" class="btn-check service-checkbox" id="svc4" name="SelectedServices" value="Lắp Đặt & Di Dời" data-price="350000" autocomplete="off">
+                            <label class="service-card" for="svc4">
+                                <div class="check-icon"><i class="bi bi-check-lg"></i></div>
+                                <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+                                <div><h6 class="fw-bold text-dark mb-1">Lắp Đặt & Di Dời</h6><span class="text-danger fw-black">350.000đ</span></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BƯỚC 2 -->
+                <div>
+                    <h4 class="section-title"><span class="section-num">2</span> Thông Tin & Thời Gian</h4>
+                    <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border border-light-subtle">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="CustomerName" placeholder="Họ và tên" required>
+                                    <label><i class="bi bi-person me-1"></i> Họ và tên của bạn</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" name="Phone" placeholder="Số điện thoại" required pattern="[0-9]{10,11}">
+                                    <label><i class="bi bi-telephone me-1"></i> Số điện thoại liên hệ</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="Address" placeholder="Địa chỉ" required>
+                                    <label><i class="bi bi-geo-alt me-1"></i> Địa chỉ sửa chữa (Số nhà, đường...)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="datetime-local" class="form-control" name="ServiceDate" required>
+                                    <label><i class="bi bi-calendar-event me-1"></i> Chọn thời gian thợ đến khảo sát</label>
+                                </div>
+                            </div>
+
+                            <!-- KHU VỰC CÂY CHUẨN ĐOÁN (ĐÃ NÂNG CẤP THÀNH CHECKBOX) -->
+                            <div class="col-12 mt-4">
+                                <div id="diagnostic-section" style="display: none; animation: slideIn 0.3s ease;">
+                                    <label class="fw-bold text-dark mb-3"><i class="bi bi-magic text-primary me-1"></i> Trợ lý chẩn đoán tình trạng (Bắt buộc)</label>
+                                    <div class="diagnostic-step bg-light p-3 rounded-4 border border-primary border-opacity-25 mb-4 shadow-sm">
+                                        <h6 class="fw-bold text-secondary mb-3 small text-uppercase" style="letter-spacing: 0.5px;">Máy lạnh của bạn đang gặp vấn đề gì nhất? (Có thể chọn nhiều)</h6>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <input type="checkbox" class="btn-check diag-checkbox" id="d1_nuoc" data-err-id="loi_nuoc" autocomplete="off">
+                                            <label class="btn btn-outline-primary rounded-pill fw-semibold text-dark" for="d1_nuoc"><i class="bi bi-droplet-fill me-1"></i> Chảy nước</label>
+
+                                            <input type="checkbox" class="btn-check diag-checkbox" id="d1_lanh" data-err-id="loi_lanh" autocomplete="off">
+                                            <label class="btn btn-outline-primary rounded-pill fw-semibold text-dark" for="d1_lanh"><i class="bi bi-thermometer-snow me-1"></i> Không lạnh/Yếu lạnh</label>
+
+                                            <input type="checkbox" class="btn-check diag-checkbox" id="d1_on" data-err-id="loi_on" autocomplete="off">
+                                            <label class="btn btn-outline-primary rounded-pill fw-semibold text-dark" for="d1_on"><i class="bi bi-activity me-1"></i> Kêu to/Ồn</label>
+
+                                            <input type="checkbox" class="btn-check diag-checkbox" id="d1_nguon" data-err-id="loi_nguon" autocomplete="off">
+                                            <label class="btn btn-outline-primary rounded-pill fw-semibold text-dark" for="d1_nguon"><i class="bi bi-lightning-charge-fill me-1"></i> Mất nguồn/Báo lỗi</label>
+                                            
+                                            <input type="checkbox" class="btn-check diag-checkbox" id="d1_khac" data-err-id="loi_khac" autocomplete="off">
+                                            <label class="btn btn-outline-primary rounded-pill fw-semibold text-dark" for="d1_khac"><i class="bi bi-question-circle-fill me-1"></i> Lỗi khác (Báo đỏ/Hư bo)</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-floating">
+                                    <textarea class="form-control shadow-none" id="bookingNotes" name="Notes" placeholder="Ghi chú thêm..." style="height: 120px; resize: none;"></textarea>
+                                    <label id="noteLabel"><i class="bi bi-chat-left-text me-1"></i> Ghi chú tình trạng máy lạnh / Yêu cầu thêm...</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= CỘT PHẢI: BIÊN LAI KÍNH MỜ ================= -->
+            <div class="col-lg-4">
+                <div class="sticky-cart">
+                    <div class="receipt-header">
+                        <h5 class="fw-black mb-0" style="letter-spacing: 1px;"><i class="bi bi-receipt-cutoff me-2"></i> BIÊN LAI DỊCH VỤ</h5>
+                    </div>
+                    
+                    <div class="p-4 p-xl-5">
+                        <div id="cart-items-container" class="mb-4">
+                            <div class="text-center text-muted py-4" id="empty-cart-msg">
+                                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-bag-x fs-1 text-secondary opacity-50"></i>
+                                </div>
+                                <p class="small fw-semibold mb-0">Bạn chưa chọn dịch vụ nào.</p>
+                            </div>
+                        </div>
+
+                        <div class="border-top border-2 border-dashed pt-4 mt-4 mb-4">
+                            <label class="fw-bold small text-dark mb-3 d-block text-uppercase"><i class="bi bi-wallet2 text-primary me-1"></i> Phương thức thanh toán</label>
+                            
+                            <div class="d-flex flex-column gap-3">
+                                <input type="radio" class="btn-check" name="PaymentMethod" id="payCash" value="Tiền mặt" checked autocomplete="off">
+                                <label class="btn btn-outline-success w-100 rounded-4 py-3 fw-bold text-start ps-4" for="payCash" style="border-width: 2px;">
+                                    <i class="bi bi-cash-stack me-2 fs-5 align-middle"></i> Thanh toán Tiền mặt
+                                </label>
+
+                                <input type="radio" class="btn-check" name="PaymentMethod" id="payBank" value="Chuyển khoản" autocomplete="off">
+                                <label class="btn btn-outline-primary w-100 rounded-4 py-3 fw-bold text-start ps-4" id="payBankLabel" for="payBank" style="border-width: 2px;">
+                                    <i class="bi bi-qr-code-scan me-2 fs-5 align-middle"></i> Chuyển khoản (Mã QR)
+                                </label>
+                            </div>
+                            
+                            <!-- Thông báo cảnh báo của JS -->
+                            <div id="paymentWarning" class="alert alert-warning border-warning border-opacity-50 bg-warning bg-opacity-10 small mt-3 fw-bold rounded-3" style="display: none; transition: opacity 0.3s ease;">
+                                * Ca khảo sát tận nhà chỉ hỗ trợ thu Tiền mặt sau khi báo giá thực tế.
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-end mb-4 bg-light p-3 rounded-4 border">
+                            <span class="text-muted fw-bold text-uppercase small" style="letter-spacing: 1px;">Tổng tạm tính</span>
+                            <h2 class="fw-black text-danger mb-0" id="total-price" style="font-weight: 900;">0đ</h2>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit-hero w-100 py-3 fw-bold fs-5 text-uppercase" style="letter-spacing: 1px;">
+                            <i class="bi bi-send-fill me-2"></i> Gửi Yêu Cầu
+                        </button>
+                        <div class="text-center mt-3">
+                            <small class="text-muted fw-semibold"><i class="bi bi-shield-lock-fill text-success me-1"></i> Thông tin được bảo mật 100%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<!-- ================= JAVASCRIPT: LOGIC CÂY CHUẨN ĐOÁN (HỢP NHẤT TỪ KHÓA) ================= -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const checkboxes = document.querySelectorAll('.service-checkbox');
+        const cartContainer = document.getElementById('cart-items-container');
+        const emptyMsg = document.getElementById('empty-cart-msg');
+        const totalPriceEl = document.getElementById('total-price');
+        const bookingForm = document.getElementById('bookingForm');
+
+        const svc3 = document.getElementById('svc3');
+        const notesField = document.getElementById('bookingNotes');
+        const noteLabel = document.getElementById('noteLabel');
+        const payCash = document.getElementById('payCash');
+        const payBank = document.getElementById('payBank');
+        const payBankLabel = document.getElementById('payBankLabel');
+        const paymentWarning = document.getElementById('paymentWarning');
+
+        const diagSection = document.getElementById('diagnostic-section');
+        const diagCheckboxes = document.querySelectorAll('.diag-checkbox');
+        
+        let estimatedRepairCost = 0;
+        let detectedErrorTags = []; 
+        let typingTimer; 
+        const doneTypingInterval = 500; 
+
+        // TỪ ĐIỂN AI LÕI (Dùng chung cho cả Nút bấm và Chữ gõ)
+        const errorDictionary = [
+            { id: "loi_nuoc", name: "Chảy / Rỉ nước", keywords: ["chảy", "rỉ", "nhỏ nước", "tràn"], price: 150000 },
+            { id: "loi_lanh", name: "Không lạnh / Yếu gas", keywords: ["không mát", "không lạnh", "hết gas", "yếu", "nóng", "k mát", "k lạnh"], price: 250000 },
+            { id: "loi_on", name: "Kêu to / Rung lắc", keywords: ["kêu", "ồn", "rè", "rung", "lắc", "hú"], price: 350000 },
+            { id: "loi_nguon", name: "Mất nguồn / Báo lỗi", keywords: ["mất nguồn", "không lên", "chớp", "nháy", "báo lỗi"], price: 500000 },
+            { id: "loi_khac", name: "Hư Board / Chập cháy", keywords: ["hư board", "hư bo", "cháy", "xì", "khét", "bốc khói", "đỏ"], price: 650000 }
+        ];
+
+        // 1. HÀM XỬ LÝ TRUNG TÂM (Tính toán chung, tự động khử trùng lặp)
+        function analyzeDiagnostic() {
+            let activeErrors = new Map(); // Dùng Map để khử trùng lặp
+            
+            // Quét các nút bấm Checkbox được chọn
+            document.querySelectorAll('.diag-checkbox:checked').forEach(cb => {
+                let errId = cb.getAttribute('data-err-id');
+                let errDef = errorDictionary.find(e => e.id === errId);
+                if (errDef) activeErrors.set(errId, errDef);
+            });
+
+            // Quét chữ trong ô ghi chú
+            let text = notesField.value.toLowerCase();
+            if (text.length > 0) {
+                errorDictionary.forEach(errDef => {
+                    if (errDef.keywords.some(kw => text.includes(kw))) {
+                        activeErrors.set(errDef.id, errDef); // Ghi đè vào Map -> Chống cộng tiền 2 lần
+                    }
+                });
+            }
+
+            // Tổng hợp Tiền và Nhãn hiển thị
+            estimatedRepairCost = 0;
+            detectedErrorTags = [];
+            
+            activeErrors.forEach(errDef => {
+                estimatedRepairCost += errDef.price;
+                detectedErrorTags.push(errDef.name);
+            });
+
+            if (estimatedRepairCost > 2500000) estimatedRepairCost = 2500000; // Mức trần an toàn
+            
+            paymentWarning.style.opacity = '1';
+            updateCart();
+        }
+
+        // Lắng nghe khách gõ chữ (Có Delay Debounce)
+        notesField.addEventListener('input', function() {
+            if (svc3.checked) {
+                clearTimeout(typingTimer);
+                if (paymentWarning.style.display === 'block' && this.value.length > 2) {
+                    paymentWarning.style.opacity = '0.5';
+                }
+                typingTimer = setTimeout(analyzeDiagnostic, doneTypingInterval);
+            }
+        });
+
+        // Lắng nghe khách bấm nút Checkbox Cây chẩn đoán
+        diagCheckboxes.forEach(cb => {
+            cb.addEventListener('change', analyzeDiagnostic);
+        });
+
+        // 2. Cập nhật giao diện giỏ hàng và tổng tiền
+        function updateCart() {
+            let total = 0;
+            let hasItems = false;
+            const currentItems = cartContainer.querySelectorAll('.cart-item');
+            currentItems.forEach(item => item.remove());
+
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    hasItems = true;
+                    const name = cb.value;
+                    let price = parseFloat(cb.getAttribute('data-price'));
+                    let priceText = "";
+
+                    if (cb.id === 'svc3') {
+                        if (estimatedRepairCost > 0) {
+                            price = estimatedRepairCost;
+                            priceText = "~ " + price.toLocaleString('vi-VN') + "đ";
+                        } else {
+                            priceText = "Báo giá sau";
+                        }
+                    } else {
+                        priceText = price === 0 ? "Báo giá sau" : price.toLocaleString('vi-VN') + "đ";
+                    }
+
+                    total += price;
+
+                    const itemHtml = `
+                        <div class="cart-item">
+                            <span class="text-dark fw-bold small"><i class="bi bi-check2-circle text-success me-2 fs-5 align-middle"></i> ${name}</span>
+                            <span class="text-danger fw-black" style="font-size: 1.05rem;">${priceText}</span>
+                        </div>`;
+                    cartContainer.insertAdjacentHTML('beforeend', itemHtml);
+                }
+            });
+
+            emptyMsg.style.display = hasItems ? "none" : "block";
+            
+            if (svc3.checked && estimatedRepairCost > 0) {
+                totalPriceEl.textContent = "~ " + total.toLocaleString('vi-VN') + "đ";
+            } else {
+                totalPriceEl.textContent = total.toLocaleString('vi-VN') + "đ";
+            }
+            handleSpecialService();
+        }
+
+        // 3. Logic Cảnh báo & Hiển thị UI
+        function handleSpecialService() {
+            if (svc3.checked) {
+                diagSection.style.display = 'block';
+                noteLabel.innerHTML = '<i class="bi bi-chat-left-text me-1"></i> Ghi chú thêm cho thợ (Không bắt buộc)';
+                
+                payCash.checked = true;
+                payBank.disabled = true;
+                payBankLabel.classList.add('disabled-payment');
+                
+                if (estimatedRepairCost > 0) {
+                    let tagsHtml = detectedErrorTags.map(tag => `<span class="badge bg-danger bg-opacity-10 text-danger border border-danger me-2 mb-2 px-2 py-1"><i class="bi bi-bug-fill me-1"></i>${tag}</span>`).join('');
+                    paymentWarning.innerHTML = `
+                        * Ca khảo sát tận nhà chỉ hỗ trợ thu Tiền mặt.<br>
+                        <div class="bg-white p-3 rounded-4 border border-info mt-3 shadow-sm" style="animation: slideIn 0.3s ease;">
+                            <div class="text-info fw-bold mb-2 small text-uppercase"><i class="bi bi-robot me-1"></i> Hệ thống chẩn đoán:</div>
+                            <div>${tagsHtml}</div>
+                            <div class="text-primary fw-bold fs-6 border-top pt-2 mt-2">
+                                <i class="bi bi-info-circle-fill me-1"></i> Dự kiến chi phí: <b class="fs-5">${estimatedRepairCost.toLocaleString('vi-VN')}đ</b>
+                            </div>
+                        </div>`;
+                    paymentWarning.className = "alert alert-warning border-warning border-opacity-50 bg-warning bg-opacity-10 small mt-3 fw-bold rounded-3";
+                } else {
+                    paymentWarning.innerHTML = `<i class="bi bi-exclamation-triangle-fill text-danger me-1"></i> Vui lòng chọn tình trạng máy lạnh hoặc mô tả lỗi để nhận báo giá dự kiến!`;
+                    paymentWarning.className = "alert alert-danger border-danger border-opacity-50 bg-danger bg-opacity-10 small mt-3 fw-bold rounded-3";
+                }
+                paymentWarning.style.display = 'block';
+            } else {
+                diagSection.style.display = 'none';
+                noteLabel.innerHTML = '<i class="bi bi-chat-left-text me-1"></i> Ghi chú tình trạng máy lạnh / Yêu cầu thêm...';
+                
+                diagCheckboxes.forEach(r => r.checked = false);
+                estimatedRepairCost = 0;
+                detectedErrorTags = [];
+
+                payBank.disabled = false;
+                payBankLabel.classList.remove('disabled-payment');
+                paymentWarning.style.display = 'none';
+            }
+        }
+
+        // Lắng nghe sự thay đổi của Service chính
+        svc3.addEventListener('change', function() {
+            if(this.checked) diagSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            analyzeDiagnostic(); 
+        });
+        
+        checkboxes.forEach(cb => cb.addEventListener('change', updateCart));
+
+        // 4. Xử lý Dữ liệu khi Gửi Đơn (Submit)
+        bookingForm.addEventListener('submit', function(e) {
+            const checkedCount = document.querySelectorAll('.service-checkbox:checked').length;
+            if (checkedCount === 0) {
+                e.preventDefault();
+                alert('Vui lòng chọn ít nhất 1 dịch vụ cần hỗ trợ!');
+                return;
+            }
+
+            if (svc3.checked && estimatedRepairCost === 0) {
+                e.preventDefault();
+                alert('Vui lòng chọn hoặc mô tả tình trạng máy lạnh để hoàn tất!');
+                notesField.focus();
+                return;
+            }
+
+            // Đóng gói mảng thẻ lỗi đã phát hiện vào chuỗi Ghi chú gửi cho Admin/Thợ
+            if (svc3.checked && detectedErrorTags.length > 0) {
+                let currentNote = notesField.value;
+                // Nếu khách có bấm nút submit nhiều lần, lọc bỏ chuỗi cũ để tránh lặp [AI CHUẨN ĐOÁN]
+                if (currentNote.includes('[AI CHUẨN ĐOÁN]')) {
+                    const splitNote = currentNote.split('\n---');
+                    currentNote = splitNote.length > 1 ? splitNote[1].trim() : ""; 
+                }
+                
+                if(currentNote.trim() !== "") {
+                    notesField.value = `[AI CHUẨN ĐOÁN]: ${detectedErrorTags.join(', ')}.\n---\n${currentNote}`;
+                } else {
+                    notesField.value = `[AI CHUẨN ĐOÁN]: ${detectedErrorTags.join(', ')}.`;
+                }
+            }
+        });
+    });
+</script>

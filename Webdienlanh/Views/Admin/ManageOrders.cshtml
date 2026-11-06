@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Webdienlanh.Models.BookingOrder>
+
+@{
+    ViewData["Title"] = "BPV - Quản Lý Đơn Hàng";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var onlineTechnicians = ViewBag.OnlineTechs as List<Webdienlanh.Models.Technician> ?? new List<Webdienlanh.Models.Technician>();
+}
+
+<div class="container-fluid py-4 px-lg-5">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success shadow-sm rounded-4 mb-4 fw-semibold p-3"><i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger shadow-sm rounded-4 mb-4 fw-semibold p-3"><i class="bi bi-exclamation-circle-fill me-2"></i>@TempData["ErrorMessage"]</div>
+    }
+
+    <div class="glass-card p-4 mb-4 bg-white">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+            <h3 class="fw-black text-dark mb-0">Quản Lý Giao Dịch</h3>
+            <div class="d-flex gap-2">
+                <div class="nav nav-pills" id="adminTabs">
+                    <button class="btn btn-dark rounded-pill fw-bold px-4 active me-1" onclick="filterByStatus('all')">Tất Cả</button>
+                    <button class="btn btn-light border rounded-pill fw-bold px-3 text-secondary me-1" onclick="filterByStatus('0')">Chờ Nhận</button>
+                    <button class="btn btn-light border rounded-pill fw-bold px-3 text-secondary" onclick="filterByStatus('1')">Đang Xử Lý</button>
+                </div>
+                <input type="text" id="adminSearchInput" class="form-control rounded-pill border shadow-none px-4 fw-medium" placeholder="Tìm tên, mã đơn..." onkeyup="adminSearch()" style="max-width: 250px;">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table modern-table w-100" id="adminOrderTable">
+                <thead>
+                    <tr><th>Mã Đơn</th><th>Khách Hàng</th><th>Dịch Vụ</th><th>Phân Công</th><th>Doanh Thu</th><th class="text-center">Trạng Thái</th><th class="text-end">Thao Tác</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        decimal rowPrice = 250000;
+                        if (item.SelectedServices != null)
+                        {
+                            if (item.SelectedServices.Contains("Vệ Sinh")) rowPrice = 150000;
+                            else if (item.SelectedServices.Contains("Lắp Đặt")) rowPrice = 350000;
+                        }
+
+                        <tr data-status="@item.Status">
+                            <td><span class="badge bg-light text-dark border px-2 py-1 fs-6">#@item.Id.ToString("D3")</span></td>
+                            <td><div class="fw-bold text-dark">@item.CustomerName</div><div class="text-muted small">@item.Phone</div></td>
+                            <td><div class="fw-bold text-dark">@item.SelectedServices</div></td>
+                            <td>
+                                @if (item.Status == 0)
+                                {
+                                    <!-- DÙNG FORM CHUẨN ĐỂ ĐẢM BẢO GỬI DỮ LIỆU AN TOÀN VỀ ADMINCONTROLLER -->
+                                    <form asp-controller="Admin" asp-action="AssignTech" method="post" onsubmit="return confirm('Xác nhận phân công đơn #@item.Id cho kỹ thuật viên này?');">
+                                        <input type="hidden" name="orderId" value="@item.Id" />
+                                        <select name="technicianId" class="form-select form-select-sm border-warning text-warning fw-bold rounded-3" style="width: 160px;" onchange="if(this.value) this.form.submit();">
+                                            <option value="" disabled selected>Chỉ định thợ...</option>
+                                            @foreach (var tech in onlineTechnicians)
+                                            {
+                                                <option value="@tech.Id">@tech.FullName</option>
+                                            }
+                                        </select>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <span class="badge-soft bg-success bg-opacity-10 text-success"><i class="bi bi-person-check-fill me-1"></i>Đã giao</span>
+                                }
+                            </td>
+                            <td><div class="fw-bold text-dark">@rowPrice.ToString("N0")₫</div></td>
+                            <td class="text-center">
+                                @if (item.Status == 0)
+                                {
+                                    <span class="badge-soft bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">Chờ lệnh</span>
+                                }
+                                else if (item.Status == 1)
+                                {
+
+                                    <span class="badge-soft bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">Đang làm</span>
+                                }
+                                else if (item.Status == 2)
+                                {
+
+                                    <span class="badge-soft bg-success bg-opacity-10 text-success border border-success border-opacity-25">Hoàn tất</span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <form asp-controller="Admin" asp-action="DeleteOrder" method="post" onsubmit="return confirm('Xóa đơn này?');">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-sm btn-light border text-danger"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function filterByStatus(status) {
+            let rows = document.querySelectorAll('#adminOrderTable tbody tr');
+            rows.forEach(row => { row.style.display = (status === 'all' || row.getAttribute('data-status') === status) ? '' : 'none'; });
+            document.querySelectorAll('#adminTabs .btn').forEach(btn => { btn.classList.remove('active', 'btn-dark', 'text-secondary', 'btn-light', 'border'); btn.classList.add('btn-light', 'border', 'text-secondary'); });
+            event.target.classList.remove('btn-light', 'border', 'text-secondary'); event.target.classList.add('active', 'btn-dark');
+        }
+        function adminSearch() {
+            let input = document.getElementById('adminSearchInput').value.toUpperCase();
+            let rows = document.querySelectorAll('#adminOrderTable tbody tr');
+            rows.forEach(row => { row.style.display = row.innerText.toUpperCase().includes(input) ? '' : 'none'; });
+        }
+    </script>
+}
